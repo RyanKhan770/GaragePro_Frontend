@@ -1,8 +1,15 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Inter', system-ui, 'Segoe UI', sans-serif;
-  background: #f4f5f7;
+  background:
+    radial-gradient(circle at top left, rgba(79, 70, 229, 0.06), transparent 24%),
+    radial-gradient(circle at top right, rgba(20, 184, 166, 0.06), transparent 22%),
+    #f4f5f7;
   color: #111827;
   -webkit-font-smoothing: antialiased;
 }
@@ -11,4 +18,111 @@ body {
   display: flex;
   min-height: 100vh;
   width: 100%;
+}
+
+button:hover,
+select:hover,
+input:hover,
+textarea:hover {
+  transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.68;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.gp-fade-up {
+  animation: gpFadeUp 0.55s ease both;
+  animation-delay: calc(var(--delay, 0) * 60ms);
+}
+
+.gp-fade-up[data-delay="1"] { --delay: 1; }
+.gp-fade-up[data-delay="2"] { --delay: 2; }
+.gp-fade-up[data-delay="3"] { --delay: 3; }
+.gp-fade-up[data-delay="4"] { --delay: 4; }
+.gp-fade-up[data-delay="5"] { --delay: 5; }
+.gp-fade-up[data-delay="6"] { --delay: 6; }
+.gp-fade-up[data-delay="7"] { --delay: 7; }
+.gp-fade-up[data-delay="8"] { --delay: 8; }
+.gp-fade-up[data-delay="9"] { --delay: 9; }
+.gp-fade-up[data-delay="10"] { --delay: 10; }
+
+.gp-toast-slide {
+  animation: gpToastSlide 0.35s ease both;
+}
+
+.gp-table-row {
+  animation: gpRowEnter 0.42s ease both;
+}
+
+.gp-scroll-panel {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #94a3b8 #e5e7eb;
+  scroll-behavior: smooth;
+  padding-right: 4px;
+}
+
+.gp-scroll-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.gp-scroll-panel::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 999px;
+}
+
+.gp-scroll-panel::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 999px;
+}
+
+.gp-scroll-panel::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+@keyframes gpFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gpToastSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gpRowEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
